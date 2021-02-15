@@ -3,7 +3,7 @@
     include 'AccountServices.php';
     include 'ReservationServices.php';
    // include 'Mailer.php';
-    $conn = new mysqli("localhost:3308","root","","db_roomreservation");
+    $conn = new mysqli("localhost","root","","db_roomreservation");
     if($conn->error){
         echo $conn->error;
     }
