@@ -1,0 +1,339 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+
+
+
+.container-cal{
+    height: 100vh;
+    background-color: white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    width: 20%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+}
+
+
+.calendar{
+    font-size: 50px;
+    width: 45rem;
+    height: 52rem;
+    background-color: maroon;
+    box-shadow: 0 0.5rem 3rem rgba(0,0,0,0.4);
+}
+
+.month{
+    width: 100%;
+    height: 12rem;
+    background-color: teal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    text-align: center;
+}
+.month i{
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.month h1{
+    font-size: 3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+}
+.month p{
+    font-size: 1.6rem;
+}
+
+.weekdays{
+    width: 100%;
+    height: 5rem;
+    padding: 0 0.4rem;
+    display: flex;
+    align-items: center;
+}
+.weekdays div{
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    width: calc(44.2rem/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.5);
+}
+.days{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+}
+.days div{
+    font-size: 1.4rem;
+    margin: 0.3rem;
+    width: calc(40.2rem/7);
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+.days div:hover:not(.today){
+    border: 0.2rem solid #777;
+    background-color: maroon;
+    cursor: pointer;
+}
+
+.prev-date, 
+.next-date{
+    opacity: 0.5;
+}
+#today{
+    background-color: teal;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    
+}
+
+.main-header{
+    font-family: Cinzel,Arial,Helvetica,sans-serif;
+    color:maroon;
+    padding: 0%;
+   
+}
+.imglogo{
+    width: 80px;
+    height: 80px;
+    float: left;
+    align-self: auto;
+}
+.header{
+    width: 80%;
+    margin-left: 100px;
+    overflow: hidden;
+}
+.text1{
+    line-height: 20px;
+    color: firebrick;
+    white-space: nowrap;
+    font-size: 14pt;
+    font-family: Cinzel,Serif;
+    font-weight: bold; 
+    text-align: justify;
+}
+
+.container{
+    display: grid;
+    /* padding: 0 5rem; */
+    grid-template-columns: 70% 30%;
+    grid-gap: 1rem;
+}
+
+.container > div{
+    padding: 1em;
+}
+
+.pup{ 
+    position: fixed;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.tbl-container{
+    padding: 50px;
+    margin: 150px auto;
+    margin-right: 15rem;
+    background-color: rgba(206, 204, 199, 0.637); 
+    width: fit-content;
+    width: 70%;
+    border: 3px solid black;
+    box-shadow:2px 2px 5px 6px rgb(133, 126, 126);
+}
+
+.thead{
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border: 5px solid #ddd;
+    border-color: #880000;
+    background-color: #880000;
+    
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+td {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border: 5px solid #ddd;
+    border-color: #880000;
+}
+
+div[class=day]:hover{
+    background-color:firebrick;
+    color: cornsilk;
+    cursor: pointer;
+}
+#date{
+    line-height: 2%;
+    color: white;
+    white-space: nowrap;
+    font-size: 14pt;
+    font-family: Cinzel,Arial,Helvetica,sans-serif;
+    font-weight: bold; 
+}
+
+.res-container{
+    background-color: white;
+    display: flex;
+  
+}
+.img-side{
+    width: 50%;
+ 
+}
+.btnSide{
+    background-color: maroon;
+    border: none;
+    width: 50%;
+    color: white;
+    text-transform: uppercase;
+    height: 50px;
+    font-family: 'poppins', sans-serif;
+    cursor: pointer;
+}
+.btnSide:hover{
+    background-color: firebrick;
+    cursor: pointer;
+}
+.btnFooter{
+    background: maroon;
+    border-style: none;
+    color: white;
+    padding: 0.5em 2em;
+    text-transform: uppercase;
+    font-family: 'poppins', sans-serif;
+}
+.btnFooter:hover{
+    background-color: firebrick;
+    cursor: pointer;
+}
+
+.side-container > div{
+    position: relative;
+    padding: 3px 0;
+}
+
+/* for room availability */
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    /* overflow:auto; */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content{
+    background-color: #f4f4f4;
+    margin: 5px auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+   
+}
+.modal-header{
+    background-color:maroon;
+    padding: 15px;
+    color: white;
+}
+.modal-header h2{
+    margin: 0;
+}
+.modal-body{
+    padding: 10px 20px;
+}
+.modal-footer{
+ padding: 10px;
+ background-color: maroon;
+}
+.closeBtn{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: white;
+}
+.closeBtn:hover,.closeBtn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.closeBtn1{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: white;
+}
+.closeBtn1:hover,.closeBtn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeBtn2{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: white;
+}
+.closeBtn2:hover,.closeBtn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content1{
+    
+    background-color: #f4f4f4;
+    margin: 5px auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    z-index: 10;   
+}
+
+input[type=text],select,input[type=datetime-local],input[type=time]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px auto;
+    display: inline-block;
+    border: 1px solid firebrick;
+    box-sizing: border-box;
+}
+.mark{
+    position: absolute;
+    background-color: rgba(255,255,255,.5);
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+}
