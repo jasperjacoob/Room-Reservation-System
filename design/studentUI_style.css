@@ -1,0 +1,236 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.main-header{
+    font-family: Cinzel,Arial,Helvetica,sans-serif;
+    color:maroon;
+    padding: 0%;
+   
+}
+.imglogo{
+    width: 80px;
+    height: 80px;
+    float: left;
+    align-self: auto;
+}
+.header{
+    width: 80%;
+    margin-left: 100px;
+    overflow: hidden;
+}
+.text1{
+    line-height: 20px;
+    color: firebrick;
+    white-space: nowrap;
+    font-size: 14pt;
+    font-family: Cinzel,Serif;
+    font-weight: bold; 
+    text-align: justify;
+}
+
+.container{
+    display: grid;
+    /* padding: 0 5rem; */
+    grid-template-columns: 70% 30%;
+    grid-gap: 1rem;
+}
+
+.container > div{
+    padding: 1em;
+}
+
+.pup{ 
+    position: fixed;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.sd_div img{
+    height: 75px;
+}
+.tbl-container{
+    padding: 50px;
+    margin: 150px auto;
+    margin-right: 15rem;
+    background-color: rgba(206, 204, 199, 0.637); 
+    width: fit-content;
+    width: 80%;
+    border: 3px solid black;
+    box-shadow:2px 2px 5px 6px rgb(133, 126, 126);
+    
+    min-height: 400px;
+    max-height: 400px;
+    max-width: 700px;
+}
+
+.thead{
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border: 5px solid #ddd;
+    border-color: #880000;
+    background-color: #880000;
+    
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+tbody{
+    padding-left: 15%;
+    height: 350px;
+    display: block;
+    overflow-y: auto;
+}
+td {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border: 5px solid #ddd;
+    border-color: #880000;
+}
+
+td:hover{
+    background-color:firebrick;
+    color: cornsilk;
+    cursor: pointer;
+}
+#date{
+    line-height: 2%;
+    color: white;
+    white-space: nowrap;
+    font-size: 14pt;
+    font-family: Cinzel,Arial,Helvetica,sans-serif;
+    font-weight: bold; 
+}
+
+.res-container{
+    background-color: white;
+    display: flex;
+  
+}
+.img-side{
+    width: 50%;
+ 
+}
+.btnSide{
+    background-color: maroon;
+    border: none;
+    width: 50%;
+    color: white;
+    text-transform: uppercase;
+    height: 50px;
+    font-family: 'poppins', sans-serif;
+    cursor: pointer;
+}
+.btnSide:hover{
+    background-color: firebrick;
+    cursor: pointer;
+}
+.btnFooter{
+    background: maroon;
+    border-style: none;
+    color: white;
+    padding: 0.5em 2em;
+    text-transform: uppercase;
+    font-family: 'poppins', sans-serif;
+}
+.btnFooter:hover{
+    background-color: firebrick;
+    cursor: pointer;
+}
+
+.side-container > div{
+    position: relative;
+    padding: 3px 0;
+}
+
+/* for room availability */
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    /* overflow:auto; */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content{
+    background-color: #f4f4f4;
+    margin: 5px auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+   
+}
+.modal-header{
+    background-color:maroon;
+    padding: 15px;
+    color: white;
+}
+.modal-header h2{
+    margin: 0;
+}
+.modal-body{
+    padding: 10px 20px;
+}
+.modal-footer{
+ padding: 10px;
+ background-color: maroon;
+}
+.closeBtn{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: white;
+}
+.closeBtn:hover,.closeBtn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.closeBtn1{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: white;
+}
+.closeBtn1:hover,.closeBtn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeBtn2{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: white;
+}
+.closeBtn2:hover,.closeBtn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+input[type=text],select,input[type=datetime-local],input[type=time],input[type=date]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px auto;
+    display: inline-block;
+    border: 1px solid firebrick;
+    box-sizing: border-box;
+}
