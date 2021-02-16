@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `tbl_course` (
   `CourseID` varchar(10) NOT NULL,
   `Description` varchar(20) NOT NULL,
   PRIMARY KEY (`CourseID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_course`
@@ -53,7 +53,7 @@ INSERT INTO `tbl_course` (`CourseID`, `Description`) VALUES
 
 DROP TABLE IF EXISTS `tbl_faculty`;
 CREATE TABLE IF NOT EXISTS `tbl_faculty` (
-  `FacultyID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `FacultyID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `EmailAddress` varchar(30) NOT NULL,
   `FirstName` varchar(20) NOT NULL,
   `MiddleName` varchar(20) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `tbl_faculty` (
   `Password` varchar(20) NOT NULL,
   PRIMARY KEY (`FacultyID`),
   UNIQUE KEY `EmailAddress` (`EmailAddress`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_faculty`
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `tbl_reservation` (
   KEY `RoomID_2` (`RoomID`),
   KEY `FacultyID` (`FacultyID`),
   KEY `YearID` (`YearID`)
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_reservation`
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `tbl_room` (
   `RoomID` varchar(10) NOT NULL,
   `Description` varchar(10) NOT NULL,
   PRIMARY KEY (`RoomID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_room`
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `tbl_student` (
   UNIQUE KEY `EmailAddress` (`EmailAddress`),
   KEY `CourseID` (`CourseID`),
   KEY `YearID` (`YearID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `tbl_subject` (
   `SubjectID` varchar(10) NOT NULL,
   `Description` varchar(20) NOT NULL,
   PRIMARY KEY (`SubjectID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_subject`
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `tbl_year` (
   `YearID` varchar(10) NOT NULL,
   `Description` int(11) NOT NULL,
   PRIMARY KEY (`YearID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_year`
