@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="design/index_style.css">
     <link rel="stylesheet" href="design/register_style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-    
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

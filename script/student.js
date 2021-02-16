@@ -1,80 +1,17 @@
 window.onload = function () {
-var timein_hrs;
-var timein_mins;
-var timeout_hrs;
-var timeout_mins;
-var timeData;
 PopulateSelect(1,'select[name="RoomNum"]');
 PopulateSelect(0,'select[name="Course"]');
 PopulateSelect(2,'select[name="Year"]');
 PopulateSelect(4,'select[name="Professor"]');
 PopulateSelect(7,'select[name="SubjectCode"]');
 PopulateSelect(10,'select[name="Equipment"]');
-var id = document.cookie.substr(3,document.cookie.indexOf(";")-3);
+let id = getCookie("ID");
 GetRequest({"get_code":"11","StudNum":id},11);
 CheckTime('timein','timeout');
 CheckTime('timein_equip','timeout_equip');
-function CheckTime(timeInID,timeOutID) {    
-    document.getElementById(timeInID).onchange = function (params) {
-        timein_hrs = $('#'+timeInID).val().substring(0,$('#'+timeInID).val().indexOf(":"));
-        timein_mins = $('#'+timeInID).val().substring($('#'+timeInID).val().indexOf(":")+1,$('#'+timeInID).val().length);    
-        if($('#'+timeOutID).val()!=""){    
-            if(CheckHrsMin(timein_hrs,timein_mins,timeout_hrs,timeout_mins)){
-                timeData = "TIME ALLOWED";
-                swal (  "TIME ALLOWED",  {
-                    buttons: false,
-                    timer: 3000,
-                });
-            }else{
-                timeData = "TIME NOT ALLOWED";
-                swal ( "TIME NOT ALLOWED" ,  {
-                    buttons: false,
-                    timer: 3000,
-                });
-            } 
-        }
-    };   
-        
-    document.getElementById(timeOutID).onchange = function (params) {
-        timeout_hrs = $('#'+timeOutID).val().substring(0,$('#'+timeOutID).val().indexOf(":"));
-            timeout_mins = $('#'+timeOutID).val().substring($('#'+timeOutID).val().indexOf(":")+1,$('#'+timeOutID).val().length);
-            
-        if($('#'+timeInID).val()!=""){    
-
-            if(CheckHrsMin(timein_hrs,timein_mins,timeout_hrs,timeout_mins,$('#'+timeOutID).val())){
-                timeData = "TIME ALLOWED";
-                swal (  "TIME ALLOWED",  {
-                    buttons: false,
-                    timer: 3000,
-                });
-            }else{
-                timeData = "TIME NOT ALLOWED";
-                swal ( "TIME NOT ALLOWED" ,  {
-                    buttons: false,
-                    timer: 3000,
-                });
-            } 
-        }
-    };
-}
-function CheckHrsMin(timeIhrs,timeImin,timeOhrs,timeOmin,time){
-    
-    if(time > "21:01"){
-        return false;
-    }
-    if(timeOhrs > timeIhrs){
-        return true;
-    }
-    if(timeOhrs == timeIhrs){
-        if(timeOmin > timeImin){
-            return true;
-        }
-    }
-    return false;
-
-}
 
 $('button[class="btnFooter"]').on('click',function (params) {
+    let id = getCookie("ID");;
     if(ValidateForms('#res_room')&&timeData=="TIME ALLOWED"){
         PostRequest($('#res_room').serialize()+"&StudNum="+id+"&btn_name=btn_reserve",'#res_room');
     }
@@ -82,6 +19,7 @@ $('button[class="btnFooter"]').on('click',function (params) {
 });
 
 $('#reserveEquipment').on('click',function (params) {
+    let id = getCookie("ID");
     if(ValidateForms('#res_equip')&&timeData=="TIME ALLOWED"){
         PostRequest($('#res_equip').serialize()+"&StudNum="+id+"&btn_name=btn_reserve",'#res_equip');
     }

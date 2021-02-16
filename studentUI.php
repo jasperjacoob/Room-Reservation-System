@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="design/studentUI_style.css?v=<?php echo time(); ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="script/timeChecker.js"></script>
     <script src="script/request.js"></script>
     <script src="script/student.js"></script>
     
@@ -184,6 +185,61 @@
        </div>
     </div>
    </div>
+<!-- FOR ROOM RESERVATION -->
+<div id="simpleModal3" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+        <span class="closeBtn1">&times;</span>
+        <h2>EQUIPMENT RESERVATION</h2>
+       </div>
+       <div class="modal-body">
+            <form id="res_equip">  
+                   <div>
+                       <h5>EQUIPMENT:</h5>
+                        <select name="Equipment">
+
+                        </select>
+                   </div>
+                   <div>
+                       <h5>PROFESSOR NAME:</h5>
+                       <select name="Professor">
+
+                        </select>
+                   </div>
+                   <div>
+                       <h5>DATE:</h5>
+                       <input id="date_room" name="Date" type="date">
+                       <h5>TIME IN:</h5>
+                       <input id="timein" name ="Timein" type="time">
+                       <h5>TIME OUT:</h5>
+                       <input id="timeout" name ="Timeout" type="time">
+
+                   </div>
+                   
+                   <div>
+                       <h5>COURSE:</h5>
+                       <select name="Course">
+
+                        </select>
+                   </div>
+                   <div>
+                       <h5>YEAR:</h5>
+                       <select name="Year">
+
+                        </select>
+                   </div>
+                   <label id="res_errormsg"></label>
+                   <button type="submit" class="btnFooter">reserve</button>
+                   <input type="reset" value="RESET" class="btnFooter">
+            </form>
+       </div>
+       <div class="modal-footer">
+            
+            
+       </div>
+    </div>
+   </div>
+
 
    <!-- MODAL FOR ABOUT -->
 <div id="simpleModal2" class="modal">

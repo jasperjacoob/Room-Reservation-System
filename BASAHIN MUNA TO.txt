@@ -1,0 +1,3 @@
+Una gumawa ng database sa phpmyadmin nyo pangalanan nyong db_roomreservation dapat sakto kundi magagalet yung gumawa
+tas pindutin nyo yung ginawa nyo tapos pagselected na click nyo yung import tas choose file tas punta kayo dito sa folder nato tas click nyo yung db_roomreservation.sql tas open. 
+G na

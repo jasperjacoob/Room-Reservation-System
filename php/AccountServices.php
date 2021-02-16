@@ -54,12 +54,14 @@
         function GetAccountName($accountID,$accountType){
             $query = "SELECT `".ucfirst($accountType)."ID` , `FirstName` , `LastName` FROM `tbl_".$accountType."` WHERE `".ucfirst($accountType)."ID` = '".$accountID."'";
             $res = $this->conn->query($query);
-            $row = $res->fetch_row();
-            $acc = [];
-            if(isset($row)){
-                array_push($acc, $row[1] . " " .$row[2],$row[0]);
+            if($res->num_rows!=0){    
+                $row = $res->fetch_row();
+                $acc = [];
+                if(isset($row)){
+                    array_push($acc, $row[1] . " " .$row[2],$row[0]);
+                }
+                echo json_encode($acc);
             }
-            echo json_encode($acc);
         }
         function PopulateCourse(){
             $query = "SELECT * FROM `tbl_course`";

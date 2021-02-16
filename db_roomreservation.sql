@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Feb 15, 2021 at 12:44 PM
+-- Generation Time: Feb 04, 2021 at 01:16 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -21,29 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_roomreservation`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_catergory`
---
-
-DROP TABLE IF EXISTS `tbl_catergory`;
-CREATE TABLE IF NOT EXISTS `tbl_catergory` (
-  `CategoryID` int(11) NOT NULL AUTO_INCREMENT,
-  `Description` varchar(50) NOT NULL,
-  PRIMARY KEY (`CategoryID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbl_catergory`
---
-
-INSERT INTO `tbl_catergory` (`CategoryID`, `Description`) VALUES
-(1, 'Table Tennis'),
-(2, 'Basketball'),
-(3, 'VolleyBall'),
-(4, 'School Items');
 
 -- --------------------------------------------------------
 
@@ -71,37 +48,6 @@ INSERT INTO `tbl_course` (`CourseID`, `Description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_equipment`
---
-
-DROP TABLE IF EXISTS `tbl_equipment`;
-CREATE TABLE IF NOT EXISTS `tbl_equipment` (
-  `EquipmentID` int(11) NOT NULL AUTO_INCREMENT,
-  `Description` varchar(50) NOT NULL,
-  `CategoryID` int(11) NOT NULL,
-  PRIMARY KEY (`EquipmentID`),
-  KEY `CategoryID` (`CategoryID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbl_equipment`
---
-
-INSERT INTO `tbl_equipment` (`EquipmentID`, `Description`, `CategoryID`) VALUES
-(1, 'Table', 1),
-(2, 'PingpongBall', 1),
-(3, 'Basketball', 2),
-(4, 'VolleyBall', 3),
-(5, 'Net', 1),
-(6, 'Net', 3),
-(7, 'Projector', 4),
-(8, 'Extension', 4),
-(9, 'Electric Fan', 1),
-(10, 'Speaker', 4);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_faculty`
 --
 
@@ -123,7 +69,10 @@ CREATE TABLE IF NOT EXISTS `tbl_faculty` (
 --
 
 INSERT INTO `tbl_faculty` (`FacultyID`, `EmailAddress`, `FirstName`, `MiddleName`, `LastName`, `Birthday`, `Password`) VALUES
-('2017-00001-BN-F', 'zxc@gmail.com', 'Kindred', 'Page', 'Lopez', '1988-06-08', 'qwert');
+('F-0001-BN-1', 'uninanymousprof@gmail.com', 'I', 'aint', 'tisoy', '1988-05-03', '123456'),
+('F-0002-BN-1', 'uninanymousprof1@gmail.com', 'I', 'am', 'pinoy', '1988-05-10', '123456'),
+('F-0003-BN-1', 'uninanymousprof2@gmail.com', 'ss', 'aint', 'tisoy', '1988-05-12', '123456'),
+('F-0004-BN-1', 'uninanymousprof3@gmail.com', 'I', 'aint', 'tisoy', '1988-05-16', '123456');
 
 -- --------------------------------------------------------
 
@@ -134,40 +83,30 @@ INSERT INTO `tbl_faculty` (`FacultyID`, `EmailAddress`, `FirstName`, `MiddleName
 DROP TABLE IF EXISTS `tbl_reservation`;
 CREATE TABLE IF NOT EXISTS `tbl_reservation` (
   `ReservationID` int(10) NOT NULL AUTO_INCREMENT,
-  `RoomID` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `EquipmentID` int(11) DEFAULT NULL,
+  `RoomID` varchar(10) NOT NULL,
   `FacultyID` varchar(20) NOT NULL,
-  `StudentID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Date` date NOT NULL,
   `TimeIn` time NOT NULL,
   `TimeOut` time NOT NULL,
-  `SubjectID` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `SubjectID` varchar(10) NOT NULL,
   `CourseID` varchar(10) NOT NULL,
   `YearID` varchar(10) NOT NULL,
-  `StatusID` int(11) NOT NULL,
-  `DateofApproval` date DEFAULT NULL,
   PRIMARY KEY (`ReservationID`),
   KEY `SubjectID` (`SubjectID`),
   KEY `RoomID` (`RoomID`),
   KEY `CourseID` (`CourseID`),
   KEY `RoomID_2` (`RoomID`),
   KEY `FacultyID` (`FacultyID`),
-  KEY `YearID` (`YearID`),
-  KEY `StatusID` (`StatusID`),
-  KEY `EquipmentID` (`EquipmentID`),
-  KEY `StudentID` (`StudentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `YearID` (`YearID`)
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_reservation`
 --
 
-INSERT INTO `tbl_reservation` (`ReservationID`, `RoomID`, `EquipmentID`, `FacultyID`, `StudentID`, `Date`, `TimeIn`, `TimeOut`, `SubjectID`, `CourseID`, `YearID`, `StatusID`, `DateofApproval`) VALUES
-(193, 'RMAVR', NULL, '2017-00001-BN-F', '2018-00111-BN-0', '2021-02-14', '10:37:00', '10:40:00', 'INTE004', 'CIDOO1', 'YR001', 2, NULL),
-(194, 'RMAVR', NULL, '2017-00001-BN-F', '2018-00111-BN-0', '2021-02-14', '07:42:00', '10:38:00', 'INTE004', 'CIDOO1', 'YR001', 1, NULL),
-(195, NULL, 1, '2017-00001-BN-F', '2018-00111-BN-0', '2021-02-14', '08:42:00', '10:42:00', NULL, 'CIDOO1', 'YR001', 2, NULL),
-(196, NULL, 1, '2017-00001-BN-F', '2018-00111-BN-0', '2021-02-15', '20:42:00', '20:46:00', NULL, 'CIDOO1', 'YR001', 2, NULL),
-(197, 'RMAVR', NULL, '2017-00001-BN-F', '2018-00111-BN-0', '2021-02-15', '20:42:00', '21:00:00', 'INTE004', 'CIDOO1', 'YR001', 2, NULL);
+INSERT INTO `tbl_reservation` (`ReservationID`, `RoomID`, `FacultyID`, `Date`, `TimeIn`, `TimeOut`, `SubjectID`, `CourseID`, `YearID`) VALUES
+(118, 'RM001', 'F-0003-BN-1', '2021-02-04', '09:14:00', '10:59:00', 'INTE004', 'CIDOO1', 'YR003'),
+(119, 'RM001', 'F-0001-BN-1', '2021-02-04', '11:07:00', '01:54:00', 'INTE004', 'CIDOO1', 'YR001');
 
 -- --------------------------------------------------------
 
@@ -187,33 +126,22 @@ CREATE TABLE IF NOT EXISTS `tbl_room` (
 --
 
 INSERT INTO `tbl_room` (`RoomID`, `Description`) VALUES
-('RMAVR', 'AVR'),
-('RMChemistr', 'Chemistry '),
-('RMCOMPLAB1', 'COMP LAB1'),
-('RMCOMPLAB2', 'COMP LAB2'),
-('RMDRAFTING', 'Drafting R');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_status`
---
-
-DROP TABLE IF EXISTS `tbl_status`;
-CREATE TABLE IF NOT EXISTS `tbl_status` (
-  `StatusID` int(11) NOT NULL AUTO_INCREMENT,
-  `Description` varchar(50) NOT NULL,
-  PRIMARY KEY (`StatusID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbl_status`
---
-
-INSERT INTO `tbl_status` (`StatusID`, `Description`) VALUES
-(1, 'APPROVED'),
-(2, 'IN PROGRESS'),
-(3, 'DISAPPROVED');
+('RM001', '504'),
+('RM002', '503'),
+('RM003', '502'),
+('RM004', '501'),
+('RM005', '404'),
+('RM006', '403'),
+('RM007', '402'),
+('RM008', '401'),
+('RM009', '304'),
+('RM010', '303'),
+('RM011', '302'),
+('RM012', '301'),
+('RM013', '204'),
+('RM014', '203'),
+('RM015', '202'),
+('RM016', '201');
 
 -- --------------------------------------------------------
 
@@ -237,13 +165,6 @@ CREATE TABLE IF NOT EXISTS `tbl_student` (
   KEY `CourseID` (`CourseID`),
   KEY `YearID` (`YearID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbl_student`
---
-
-INSERT INTO `tbl_student` (`StudentID`, `EmailAddress`, `FirstName`, `MiddleName`, `LastName`, `CourseID`, `YearID`, `Birthday`, `Password`) VALUES
-('2018-00111-BN-0', 'sdfsd', 'Gerald', 'Lerio', 'Orzal', 'CIDOO1', 'YR001', '2021-02-04', 'qwert');
 
 -- --------------------------------------------------------
 
@@ -293,12 +214,6 @@ INSERT INTO `tbl_year` (`YearID`, `Description`) VALUES
 --
 
 --
--- Constraints for table `tbl_equipment`
---
-ALTER TABLE `tbl_equipment`
-  ADD CONSTRAINT `tbl_equipment_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `tbl_catergory` (`CategoryID`);
-
---
 -- Constraints for table `tbl_reservation`
 --
 ALTER TABLE `tbl_reservation`
@@ -306,10 +221,7 @@ ALTER TABLE `tbl_reservation`
   ADD CONSTRAINT `tbl_reservation_ibfk_2` FOREIGN KEY (`CourseID`) REFERENCES `tbl_course` (`CourseID`),
   ADD CONSTRAINT `tbl_reservation_ibfk_3` FOREIGN KEY (`SubjectID`) REFERENCES `tbl_subject` (`SubjectID`),
   ADD CONSTRAINT `tbl_reservation_ibfk_4` FOREIGN KEY (`FacultyID`) REFERENCES `tbl_faculty` (`FacultyID`),
-  ADD CONSTRAINT `tbl_reservation_ibfk_5` FOREIGN KEY (`YearID`) REFERENCES `tbl_year` (`YearID`),
-  ADD CONSTRAINT `tbl_reservation_ibfk_6` FOREIGN KEY (`StatusID`) REFERENCES `tbl_status` (`StatusID`),
-  ADD CONSTRAINT `tbl_reservation_ibfk_7` FOREIGN KEY (`EquipmentID`) REFERENCES `tbl_equipment` (`EquipmentID`),
-  ADD CONSTRAINT `tbl_reservation_ibfk_8` FOREIGN KEY (`StudentID`) REFERENCES `tbl_student` (`StudentID`);
+  ADD CONSTRAINT `tbl_reservation_ibfk_5` FOREIGN KEY (`YearID`) REFERENCES `tbl_year` (`YearID`);
 
 --
 -- Constraints for table `tbl_student`

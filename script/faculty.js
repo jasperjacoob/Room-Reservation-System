@@ -1,15 +1,34 @@
 window.onload = function () {
     
 // get element modal for room availability
+PopulateSelect(10,'select[name="Equipment"]');
 PopulateSelect(1,'select[name="RoomNum"]');
 PopulateSelect(0,'select[name="Course"]');
 PopulateSelect(2,'select[name="Year"]');
 PopulateSelect(7,'select[name="SubjectCode"]');
-$('button[class="btnFooter"]').on('click',function () {
-    if(ValidateForms("#prof_res")){
-        PostRequest($("#prof_res").serialize()+"&btn_name=btn_reserve","#prof_res","");
+var id = document.cookie.substr(3,document.cookie.indexOf(";")-3);
+GetRequest({"get_code":"11","facultyID":id},11);
+$('#btnres_room').on('click',function () {
+    if(ValidateForms("#prof_res")&&timeData=="TIME ALLOWED"){
+        PostRequest($("#prof_res").serialize()+"&Professor="+id+"&btn_name=btn_reserve","#prof_res","");
     }
     return false;
+});
+$('#btnres_equip').on('click',function () {
+    if(ValidateForms("#prof_res_equip")&&timeData=="TIME ALLOWED"){
+        PostRequest($("#prof_res_equip").serialize()+"&Professor="+id+"&btn_name=btn_reserve","#prof_res_equip","");
+    }
+    return false;
+});
+
+$('#res_equipModalBtn').on('click',function (params) {
+    let accType = document.cookie.substr(document.cookie.indexOf(";")+10,document.length);
+    let id = document.cookie.substr(3,document.cookie.indexOf(";")-3);
+    modal4.style.display = "block";
+    alert(document.cookie);
+    let a = {"ID":id,"AccType":accType,"get_code":8};
+    GetRequest(a,8);
+    CheckTime('timein_equipment','timeout_equipment');
 });
 $('#logout').on('click',function () {
     
@@ -23,6 +42,8 @@ var modal1 = document.getElementById('simpleModal1');
 // get element modal for about modal
 var modal2 = document.getElementById('simpleModal2');
 var modal3 = document.getElementById('simpleModal3');
+var modal4 = document.getElementById('simpleModal4');
+
 // get button element for button reserve
 var resModalBtn = document.getElementById('resModalBtn');
 
@@ -32,11 +53,11 @@ var aboutBtn = document.getElementById('aboutBtn');
 // baka alam mo pano proper syntax dito na mas maikli, eto yung pag ni click yung 
 // table data diko alam pano makuha element ng table data e
 var modalBtn = document.getElementsByClassName('modalBtn');
-var modalBtn1 = document.getElementsByClassName('modalBtn')[1];
+
 
 
 //get element for close button in modal
-var closeBtn = document.getElementsByClassName('closeBtn')[0];
+
 
 //get element for close button in modal
 var closeBtn1 = document.getElementsByClassName('closeBtn1')[0];
@@ -48,15 +69,17 @@ var closeBtn1 = document.getElementsByClassName('closeBtn1')[0];
 // to open modal for room availability
 
 
-modalBtn1.addEventListener('click', openModal);
+
 
 // to open modal for room reservation
 resModalBtn.onclick = function () {
-    let accType = document.cookie.substr(document.cookie.indexOf(";")+10,document.length);
-    let id = document.cookie.substr(3,document.cookie.indexOf(";")-3);
+    let accType = getCookie("AccType");
+    let id = getCookie("ID");
     let a = {"ID":id,"AccType":accType,"get_code":8};
     GetRequest(a,8);
     openModal1();
+    CheckTime('timein','timeout');
+    
 }
 
 
@@ -65,7 +88,7 @@ aboutBtn.addEventListener('click', openModal2);
 
 
 // event listener for close button
-closeBtn.addEventListener('click', closeModal);
+
 
 // event listener for close button in room reservation
 closeBtn1.addEventListener('click', closeModal1);
@@ -92,6 +115,8 @@ window.addEventListener('click', outsideClick);
 window.addEventListener('click', outsideClick1);
 window.addEventListener('click', outsideClick2);
 window.addEventListener('click', outsideClick3);
+window.addEventListener('click', outsideClick4);
+
 // function for opening modal for room availabiliy
 function openModal(){
     modal.style.display = 'block';
@@ -147,6 +172,12 @@ function outsideClick2(e){
         
     modal2.style.display = 'none';
     
+    }
+}
+function outsideClick4(e){
+    if(e.target == modal4){
+        $('#simpleModal4').css("display","none");
+        
     }
 }
 function outsideClick3(e) {

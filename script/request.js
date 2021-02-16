@@ -113,8 +113,15 @@ function PostRequest(frmdata,form,accountType) {
                             timer: 2000,
                         });
                         $('#res_equip')[0].reset();
-                        
                         break;
+                    case '#prof_res_equip':
+                        swal ( data ,  {
+                            buttons: false,
+                            timer: 2000,
+                          });
+                          $('#prof_res_equip')[0].reset();      
+                        break;
+                    
                 }
                 
             }else{
@@ -250,8 +257,10 @@ function GetRequest(sentdata,code) {
                     
                     break;
                 case 8:
+                    
                     let name = JSON.parse(data);
-                    $('#profname').val(name[1]);
+                    $('#profname').val(name[0]);
+                    $('#profname_equip').val(name[0]);
                     
                     break;
                 case 9:
@@ -273,6 +282,7 @@ function GetRequest(sentdata,code) {
                     $('#changepass_form')[0].reset();
                     break;
                 case 11:
+                    
                     $('#tbl_room').append(data);
                     break;
             }

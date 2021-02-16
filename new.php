@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="design/facultyUI_style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="script/timeChecker.js"></script>
     <script src="script/request.js"></script>
 </head>
 
@@ -35,7 +36,7 @@
                         ?>
                     </th>
                 </tr>
-                <tr>
+                <tr id="tab_header">
                     <th>Reservation</th>
                     <th>Reservation Date</th>
                     <th>Date of approval</th>
@@ -46,9 +47,13 @@
 
         <div class="res-container">
             <div class="side-container">
+                <div>           
+                    <img src="" class="img-side">
+                    <button class="btnSide" id="res_equipModalBtn"> reserve equipment</button>
+                </div>
                 <div>
                     <img src="image/reserve.svg" class="img-side">
-                    <button class="btnSide" id="resModalBtn"> reserve</button>
+                    <button class="btnSide" id="resModalBtn"> reserve room</button>
                 </div>
                 <div>
                     <img src="image/calendar.svg" class="img-side">
@@ -67,43 +72,6 @@
 
 
 
-    <!-- FOR CHECKING ROOM AVAILABILITY -->
-    <div id="simpleModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="closeBtn">&times;</span>
-                <h2>ROOM DESCRIPTION</h2>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div>
-                        <h5>PROFESSOR NAME:</h5>
-                        <input name="professor" type="text" class="read" readonly>
-                    </div>
-                    <div>
-                        <h5>DATE AND TIME:</h5>
-                        <input name="dateTime" type="text" class="read" readonly>
-                    </div>
-                    <div>
-                        <h5>COURSE:</h5>
-                        <input name="course" type="text" class="read" readonly>
-                    </div>
-                    <div>
-                       <h5>YEAR:</h5>
-                       <input name="year" class = "read"  name="year" type="text" readonly>
-                   </div>
-                    <div>
-                        <h5>SUBJECT CODE:</h5>
-                        <input name="subject" type="text" class="read" readonly>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-
-            </div>
-        </div>
-    </div>
-    <!-- FOR Reservation List -->
     <div id="simpleModal3" class="modal">
         <div class="modal-content1">
             <div class="modal-header">
@@ -135,11 +103,13 @@
                     </div>
                     <div>
                         <h5>PROFESSOR NAME:</h5>
-                        <input type="text" name="Professor" id="profname" readonly>
+                        <input type="text" id="profname" readonly>
                     </div>
                     <div>
-                        <h5>DATE AND TIME IN:</h5>
-                        <input id="timein" type="datetime-local" name="DateTime" required>
+                        <h5>DATE:</h5>
+                        <input id="date_resroom" type="date" name="Date" required>
+                        <h5>TIME IN:</h5>
+                        <input id="timein" type="time" name="Timein" required>
                         <h5>TIME OUT:</h5>
                         <input id= "timeout" name ="Timeout" type="time" required>
                     </div>
@@ -164,14 +134,64 @@
                     </div>
                     <div class="modal-footer">
                     <label id="res_errormsg"></label>
-                <button class="btnFooter">reserve</button>
-                <input type="reset" value="RESET" class="btnFooter">
+                <button class="btnFooter" id="btnres_room">reserve</button>
+                <input type="reset" value="RESET" id='btnres_room_reset' class="btnFooter">
             </div>
                 </form>
             </div>
             
         </div>
     </div>
+    <div id="simpleModal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="closeBtn1">&times;</span>
+                <h2>EQUIPMENT RESERVATION</h2>
+            </div>
+            <div class="modal-body">
+                <form id="prof_res_equip">
+                    <div>
+                        <h5>EQUIPMENT:</h5>
+                        <select name="Equipment">
+
+                        </select>
+                    </div>
+                    <div>
+                        <h5>PROFESSOR NAME:</h5>
+                        <input type="text" id="profname_equip" readonly>
+                    </div>
+                    <div>
+                        <h5>DATE:</h5>
+                        <input id="date_equipment" type="date" name="Date" required>
+                        <h5>TIME IN:</h5>
+                        <input id="timein_equipment" type="time" name="Timein" required>
+                        <h5>TIME OUT:</h5>
+                        <input id= "timeout_equipment" name ="Timeout" type="time" required>
+                    </div>
+                    <div>
+                        <h5>COURSE:</h5>
+                        <select name="Course">
+
+                        </select>
+                    </div>
+                    <div>
+                        <h5>Year:</h5>
+                        <select name="Year">
+
+                        </select>
+                    </div>
+                    <button class="btnFooter" id="btnres_equip">reserve</button>
+                    <input type="reset" value="RESET" id='btnres_equip_reset' class="btnFooter">
+                    <div class="modal-footer">
+                    <label id="res_errormsg_equip"></label>
+                
+            </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
 
     <!-- MODAL FOR CALENDAR -->
     <div id="simpleModal2" class="modal">

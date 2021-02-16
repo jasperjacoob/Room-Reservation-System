@@ -80,17 +80,21 @@
                 $query = "SELECT tbl_reserve.RoomID, tbl_reserve.EquipmentID, tbl_reserve.Date, tbl_reserve.DateofApproval,stat.Description FROM tbl_reservation AS tbl_reserve INNER JOIN tbl_status AS stat WHERE tbl_reserve.StudentID = '".$studentID."' AND tbl_reserve.StatusID = stat.StatusID";
                 $result = $this->conn->query($query);
                 if($result->num_rows > 0){
+                    
                     while($row = $result->fetch_row()){
                         if($row[0]!=null){
+                                $room = $this->GetRoomDescription($row[0]);
                                 echo "<tr>
-                                <td>".$row[0]."</td>
+                                <td>".$room."</td>    
                                 <td>".$row[2]."</td>
                                 <td>".$row[3]."</td>
                                 <td>".$row[4]."</td>
                                 </tr>";
                         }else{
-                                echo "<tr>
-                                <td>".$row[1]."</td>
+                                
+                            $equip = $this->GetEquipmentDescription($row[1]);
+                            echo "<tr>
+                            <td>".$equip."</td>
                                 <td>".$row[2]."</td>
                                 <td>".$row[3]."</td>
                                 <td>".$row[4]."</td>
@@ -104,15 +108,17 @@
                 if($result->num_rows > 0){
                     while($row = $result->fetch_row()){
                         if($row[0]!=null){
+                                $room = $this->GetRoomDescription($row[0]);
                                 echo "<tr>
-                                <td>".$row[0]."</td>
+                                <td>".$room."</td>
                                 <td>".$row[2]."</td>
                                 <td>".$row[3]."</td>
                                 <td>".$row[4]."</td>
                                 </tr>";
                         }else{
+                                $equip = $this->GetEquipmentDescription($row[1]);
                                 echo "<tr>
-                                <td>".$row[1]."</td>
+                                <td>".$equip."</td>
                                 <td>".$row[2]."</td>
                                 <td>".$row[3]."</td>
                                 <td>".$row[4]."</td>
@@ -122,6 +128,23 @@
                 }
             }
 
+        }
+        function GetRoomDescription($roomID){
+            $query = "SELECT `Description` FROM `tbl_room` WHERE `RoomID` ='".$roomID."'";
+            $res = $this->conn->query($query);
+            if($res->num_rows !=0){
+                 $row = $res->fetch_row();
+                 return $row[0];
+            }
+        }
+        function GetEquipmentDescription($equipmentID)
+        {
+            $query ="SELECT `Description` FROM `tbl_equipment` WHERE `EquipmentID` ='".$equipmentID."'";
+            $res = $this->conn->query($query);
+            if($res->num_rows !=0){
+                $row = $res->fetch_row();
+                return $row[0];
+            }
         }
         function ConvertID($ID,$tablename){
             if($tablename=="faculty"){
