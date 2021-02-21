@@ -43,21 +43,18 @@
                         <input class="input" type="password" name="Password" >
                     </div>
                 </div>
-                    <a>forget password?</a>
+                    <a class="forgetpass">forget password?</a>
                     <select class="select2" name="AccountType" id="log_acctype">
                         <option value=""disabled selected>USERTYPE</option>
                         <option value="faculty">FACULTY</option>
                         <option value="student">STUDENT</option>
                     </select>
-                    <!-- eto yung sinasabi ko sayo tol pag nasa loob ng form di nagana  -->
-                
-                    <!-- <label id="log_errormsg"></label> -->
-                    
-
+                    <button id="login" class="btn" > login </button> <br>                    
+                    <a href="#" class="btn" id="modalBtn"> Register</a>   
             </form>
-            <button id="login" class="btn" > login </button> <br>                    
-            <button id="modalBtn" class="buttonreg"> Register  </button>          
-                
+            
+                 
+              
         </div> 
     </div>
     <div class="modal" id="simplePrompt">

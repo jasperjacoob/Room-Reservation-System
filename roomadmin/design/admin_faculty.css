@@ -1,0 +1,96 @@
+.top-content{
+    background: #ddd;
+    position: absolute;
+    min-width: 10rem;
+    min-height: 2rem;
+    top: 0;
+    margin: 1rem 15rem;
+    padding: 0.5rem;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+.top-content a{
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    background: maroon;
+    font-size: 14px;
+    margin: 0rem 1rem;
+}
+
+.top-content a:hover{
+    background: #ddd;
+    cursor: pointer;
+    transition: 0.5s;
+    color: maroon;
+}
+
+.main-content{
+    margin: 10rem 14rem;
+    position: absolute;
+    background: #ddd;
+    min-width: max-content;
+    height: max-content;
+    padding: 1rem 2rem;
+    display: flex;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+/* table design */
+.tbl-container{
+    margin-top: 180px;
+    margin-left: 300px;
+    max-width: max-content;
+    height: 50%;
+    background: white;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+thead td{
+    height: fit-content;
+    width: 100px;
+    text-align: center;
+    border: 3px solid #999;
+}
+tbody td {
+    padding: 0.2rem;
+    height: fit-content;
+    width: 100px;
+    text-align: center;
+    border: 3px groove #999;
+}
+
+.btnEdit{
+    border: none;
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+}
+
+.btnEdit:hover{
+    cursor: pointer;
+    background-color: yellowgreen;
+    transition: 0.5s;
+}
+
+.btnDelete{
+    border: none;
+    background-color:red;
+    color: white;
+    padding: 5px 10px;
+}
+
+.btnDelete:hover{
+    cursor: pointer;
+    background-color: orangered;
+    transition: 0.5s;
+}

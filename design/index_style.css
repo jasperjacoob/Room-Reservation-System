@@ -148,7 +148,7 @@ form h2{
     font-family: 'poppins', sans-serif;
 }
 
-a{
+.forgetpass{
     display: block;
     text-align: right;
     text-decoration: none;
@@ -157,7 +157,7 @@ a{
     transition: .3s;
 }
 
-a:hover{
+.forgetpass:hover{
     color:firebrick;
 }
 
@@ -191,11 +191,12 @@ a:hover{
     font-family: 'poppins', sans-serif;
     cursor: pointer;
     text-transform: uppercase;
+    text-decoration: none;
 }
-
 .btn:hover{
     background-color: firebrick;
 }
+
 
 
 @media screen and (max-width: 1050px){
